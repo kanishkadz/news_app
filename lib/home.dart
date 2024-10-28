@@ -110,9 +110,7 @@ class _HomeState extends State<Home> {
                 builder: (BuildContext context){
                   return Container(
                     margin: EdgeInsets.symmetric(horizontal: 5, vertical: 14),
-                    decoration: BoxDecoration(
-                      color: item
-                    ),
+                    child : Text(item),
                   );
                 },
               );
@@ -124,5 +122,5 @@ class _HomeState extends State<Home> {
     );
   }
 
-  final List items = [Colors.blueAccent, Colors.orange, Colors.red];
+  final List items = ["Hello", "I", "am","Kanishka"];
 }
