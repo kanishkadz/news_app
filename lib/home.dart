@@ -8,12 +8,13 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  TextEditingController searchController = new TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("NEWS PULSE"),
-        centerTitle: true,,
+        centerTitle: true,
       ),
       body: Column(
         children: [
