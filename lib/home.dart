@@ -65,6 +65,7 @@ class _HomeState extends State<Home> {
           ),
           Container(
             child: ListView.builder(
+              scrollDirection: Axis.horizontal,
               itemCount: navBarItem.length,
                 itemBuilder: (context, index) {
                 return Container(
