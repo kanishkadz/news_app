@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:carousel_slider';
+import 'package:carousel_slider/carousel_slider.dart';
+
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -100,7 +101,8 @@ class _HomeState extends State<Home> {
           ),
           CarouselSlider(
             options: CarouselOptions(
-              
+              height: 200,
+
             ),
             items: items.map((item) {
               return Builder(
