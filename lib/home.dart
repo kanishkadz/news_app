@@ -70,19 +70,26 @@ class _HomeState extends State<Home> {
               scrollDirection: Axis.horizontal,
               itemCount: navBarItem.length,
                 itemBuilder: (context, index) {
-                return Container(
-                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                  margin: EdgeInsets.symmetric(horizontal: 5),
-                  decoration: BoxDecoration(
-                    color: Colors.yellow,
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  child: Text(
-                      navBarItem[index],
-                    style: TextStyle(
-                      fontSize: 19,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
+                return InkWell(
+                  onTap: (){
+                    print(navBarItem[index]);
+                  },
+                  child: Container(
+                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                    margin: EdgeInsets.symmetric(horizontal: 5),
+                    decoration: BoxDecoration(
+                      color: Colors.blueAccent,
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: Center(
+                      child: Text(
+                          navBarItem[index],
+                        style: TextStyle(
+                          fontSize: 19,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ),
                   ),
                 );
