@@ -1,4 +1,6 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:carousel_slider';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -95,10 +97,23 @@ class _HomeState extends State<Home> {
                 );
                 }
             )
-
           ),
+          CarouselSlider(
+            items: items.map((item) {
+              return Builder(
+                builder: (BuildContext contex){
+                  return Container(
+
+                  );
+                },
+              );
+            })
+          ),
+
         ],
       ),
     );
   }
+
+  final List items = [Colors.blueAccent, Colors.orange, Colors.red];
 }
