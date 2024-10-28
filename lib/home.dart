@@ -67,7 +67,9 @@ class _HomeState extends State<Home> {
             child: ListView.builder(
               itemCount: navBarItem.length,
                 itemBuilder: (context, index) {
-                return Container.builder()
+                return Container(
+                  child: Text(navBarItem[index]),
+                );
                 }
             )
 
