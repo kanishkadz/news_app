@@ -102,12 +102,14 @@ class _HomeState extends State<Home> {
           CarouselSlider(
             options: CarouselOptions(
               height: 200,
-
+              autoPlay: true,
+              enableInfiniteScroll: false,
             ),
             items: items.map((item) {
               return Builder(
-                builder: (BuildContext contex){
+                builder: (BuildContext context){
                   return Container(
+                    margin: EdgeInsets.symmetric(horizontal: 5),
                     decoration: BoxDecoration(
                       color: item
                     ),
