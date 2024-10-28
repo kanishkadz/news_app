@@ -99,11 +99,16 @@ class _HomeState extends State<Home> {
             )
           ),
           CarouselSlider(
+            options: CarouselOptions(
+              
+            ),
             items: items.map((item) {
               return Builder(
                 builder: (BuildContext contex){
                   return Container(
-
+                    decoration: BoxDecoration(
+                      color: item
+                    ),
                   );
                 },
               );
