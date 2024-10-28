@@ -108,9 +108,11 @@ class _HomeState extends State<Home> {
             items: items.map((item) {
               return Builder(
                 builder: (BuildContext context){
-                  return Container(
-                    margin: EdgeInsets.symmetric(horizontal: 5, vertical: 14),
-                    child : Text(item),
+                  return InkWell(
+                    child: Container(
+                      margin: EdgeInsets.symmetric(horizontal: 5, vertical: 14),
+                      child : Text(item),
+                    ),
                   );
                 },
               );
