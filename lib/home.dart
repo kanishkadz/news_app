@@ -109,7 +109,7 @@ class _HomeState extends State<Home> {
               return Builder(
                 builder: (BuildContext context){
                   return Container(
-                    margin: EdgeInsets.symmetric(horizontal: 5),
+                    margin: EdgeInsets.symmetric(horizontal: 5, vertical: 14),
                     decoration: BoxDecoration(
                       color: item
                     ),
