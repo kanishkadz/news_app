@@ -9,6 +9,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   TextEditingController searchController = TextEditingController();
+  List<String> navBarItem = ["Top News", "India", "World", "Finance", "Health"];
 
   @override
   Widget build(BuildContext context) {
@@ -61,6 +62,9 @@ class _HomeState extends State<Home> {
                 ),
               ],
             ),
+          ),
+          Container(
+            child: ListView.Builder(
           ),
         ],
       ),
