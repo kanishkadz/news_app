@@ -66,10 +66,17 @@ class _HomeState extends State<Home> {
           Container(
             height: 50,
             child: ListView.builder(
+              shrinkWrap: true,
               scrollDirection: Axis.horizontal,
               itemCount: navBarItem.length,
                 itemBuilder: (context, index) {
                 return Container(
+                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  margin: EdgeInsets.symmetric(horizontal: 5),
+                  decoration: BoxDecoration(
+                    color: Colors.yellow,
+                    borderRadius: BorderRadius.circular(15),
+                  ),
                   child: Text(navBarItem[index]),
                 );
                 }
