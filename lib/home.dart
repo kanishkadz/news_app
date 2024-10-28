@@ -77,7 +77,14 @@ class _HomeState extends State<Home> {
                     color: Colors.yellow,
                     borderRadius: BorderRadius.circular(15),
                   ),
-                  child: Text(navBarItem[index]),
+                  child: Text(
+                      navBarItem[index],
+                    style: TextStyle(
+                      fontSize: 19,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 );
                 }
             )
