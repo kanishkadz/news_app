@@ -64,7 +64,13 @@ class _HomeState extends State<Home> {
             ),
           ),
           Container(
-            child: ListView.Builder(
+            child: ListView.builder(
+              itemCount: navBarItem.length,
+                itemBuilder: (context, index) {
+                return Container.builder()
+                }
+            )
+
           ),
         ],
       ),
