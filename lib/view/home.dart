@@ -12,45 +12,48 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   bool isLoading = true;
+  NewsArt? newsArt;
 
-  late NewsArt newsArt;
-
-  GetNews() async {
-    newsArt = await FetchNews.fetchNews();
-
-    setState(() {
-      isLoading = false;
-    });
+  Future<void> getNews() async {
+    try {
+      newsArt = await FetchNews.fetchNews();
+    } catch (e) {
+      print('Error fetching news: $e');
+    } finally {
+      setState(() {
+        isLoading = false;
+      });
+    }
   }
 
   @override
   void initState() {
-    GetNews();
     super.initState();
+    getNews();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      body: isLoading
+          ? Center(child: CircularProgressIndicator())
+          : PageView.builder(
+        controller: PageController(initialPage: 0),
+        scrollDirection: Axis.vertical,
+        itemBuilder: (context, index) {
+          if (newsArt == null) {
+            return Center(child: Text("No news available"));
+          }
 
-
-      body: PageView.builder(
-          controller: PageController(initialPage: 0),
-          scrollDirection: Axis.vertical,
-          onPageChanged: (value) {
-            setState(() {
-              isLoading = true;
-            });
-            GetNews();
-          },
-          itemBuilder: (context, index) {
-            return isLoading ? Center(child: CircularProgressIndicator(),) : NewsContainer(
-                imgUrl: newsArt.imgUrl,
-                newsCnt: newsArt.newsCnt,
-                newsHead: newsArt.newsHead,
-                newsDes: newsArt.newsDes,
-                newsUrl: newsArt.newsUrl);
-          }),
+          return NewsContainer(
+            imgUrl: newsArt!.imgUrl,
+            newsCnt: newsArt!.newsCnt,
+            newsHead: newsArt!.newsHead,
+            newsDes: newsArt!.newsDes,
+            newsUrl: newsArt!.newsUrl,
+          );
+        },
+      ),
     );
   }
 }
