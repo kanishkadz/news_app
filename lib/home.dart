@@ -1,131 +1,56 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:carousel_slider/carousel_slider.dart';
+import 'package:news_snack/controller/fetchNews.dart';
+import 'package:news_snack/model/newsArt.dart';
+import 'package:news_snack/view/widget/NewsContainer.dart';
 
-
-class Home extends StatefulWidget {
-  const Home({super.key});
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
-  State<Home> createState() => _HomeState();
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeState extends State<Home> {
-  TextEditingController searchController = TextEditingController();
-  List<String> navBarItem = ["Top News", "India", "World", "Finance", "Health"];
+class _HomeScreenState extends State<HomeScreen> {
+  bool isLoading = true;
+
+  late NewsArt newsArt;
+
+  GetNews() async {
+    newsArt = await FetchNews.fetchNews();
+
+    setState(() {
+      isLoading = false;
+    });
+  }
+
+  @override
+  void initState() {
+    GetNews();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("NEWS PULSE"),
-        centerTitle: true,
-      ),
-      body: Column(
-        children: [
-          // Search Container
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 8),
-            margin: EdgeInsets.symmetric(horizontal: 24, vertical: 20),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(24),
-            ),
-            child: Row(
-              children: [
-                GestureDetector(
-                  onTap: () {
-                    if ((searchController.text).replaceAll(" ", "") == "") {
-                      print("Blank search");
-                    } else {
-                      // Uncomment the following line to navigate to the search page
-                      // Navigator.push(context, MaterialPageRoute(builder: (context) => Search(searchController.text)));
-                    }
-                  },
-                  child: Container(
-                    child: Icon(
-                      Icons.search,
-                      color: Colors.blueAccent,
-                    ),
-                    margin: EdgeInsets.fromLTRB(3, 0, 7, 0),
-                  ),
-                ),
-                Expanded(
-                  child: TextField(
-                    controller: searchController,
-                    textInputAction: TextInputAction.search,
-                    onSubmitted: (value) {
-                      print(value);
-                    },
-                    decoration: InputDecoration(
-                      border: InputBorder.none,
-                      hintText: "Search Health",
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Container(
-            height: 50,
-            child: ListView.builder(
-              shrinkWrap: true,
-              scrollDirection: Axis.horizontal,
-              itemCount: navBarItem.length,
-                itemBuilder: (context, index) {
-                return InkWell(
-                  onTap: (){
-                    print(navBarItem[index]);
-                  },
-                  child: Container(
-                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                    margin: EdgeInsets.symmetric(horizontal: 5),
-                    decoration: BoxDecoration(
-                      color: Colors.blueAccent,
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    child: Center(
-                      child: Text(
-                          navBarItem[index],
-                        style: TextStyle(
-                          fontSize: 19,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ),
-                );
-                }
-            )
-          ),
-          CarouselSlider(
-            options: CarouselOptions(
-              height: 200,
-              autoPlay: true,
-              enableInfiniteScroll: false,
-            ),
-            items: items.map((item) {
-              return Builder(
-                builder: (BuildContext context){
-                  return InkWell(
-                    child: Container(
-                      margin: EdgeInsets.symmetric(horizontal: 5, vertical: 14),
-                      child : Text(item),
-                    ),
-                  );
-                },
-              );
-            }).toList(),
-          ),
-          Container(
-            child: ListView.builder(itemBuilder: (context, index{}),
-          )
 
-        ],
-      ),
+
+      body: PageView.builder(
+          controller: PageController(initialPage: 0),
+          scrollDirection: Axis.vertical,
+          onPageChanged: (value) {
+            setState(() {
+              isLoading = true;
+            });
+            GetNews();
+          },
+          itemBuilder: (context, index) {
+            return isLoading ? Center(child: CircularProgressIndicator(),) : NewsContainer(
+                imgUrl: newsArt.imgUrl,
+                newsCnt: newsArt.newsCnt,
+                newsHead: newsArt.newsHead,
+                newsDes: newsArt.newsDes,
+                newsUrl: newsArt.newsUrl);
+          }),
     );
   }
-
-  final List items = ["Hello", "I", "am","Kanishka"];
 }
