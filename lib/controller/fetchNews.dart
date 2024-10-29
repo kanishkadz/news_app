@@ -2,7 +2,7 @@
 import 'dart:convert';
 import 'dart:math';
 import 'package:http/http.dart';
-import 'package:news_snack/model/newsArt.dart';
+import 'package:news_pulse/model/newsArt.dart';
 
 class FetchNews {
   static List sourcesId = [
