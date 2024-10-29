@@ -12,11 +12,11 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   bool isLoading = true;
-  NewsArt? newsArt;
+  List<NewsArt>? newsArticles; // Change to a list
 
   Future<void> getNews() async {
     try {
-      newsArt = await FetchNews.fetchNews();
+      newsArticles = await FetchNews.fetchNews(); // Fetch multiple articles
     } catch (e) {
       print('Error fetching news: $e');
     } finally {
@@ -37,20 +37,20 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       body: isLoading
           ? Center(child: CircularProgressIndicator())
+          : newsArticles == null || newsArticles!.isEmpty
+          ? Center(child: Text("No news available"))
           : PageView.builder(
         controller: PageController(initialPage: 0),
         scrollDirection: Axis.vertical,
+        itemCount: newsArticles!.length,
         itemBuilder: (context, index) {
-          if (newsArt == null) {
-            return Center(child: Text("No news available"));
-          }
-
+          final newsArt = newsArticles![index];
           return NewsContainer(
-            imgUrl: newsArt!.imgUrl,
-            newsCnt: newsArt!.newsCnt,
-            newsHead: newsArt!.newsHead,
-            newsDes: newsArt!.newsDes,
-            newsUrl: newsArt!.newsUrl,
+            imgUrl: newsArt.imgUrl,
+            newsCnt: newsArt.newsCnt,
+            newsHead: newsArt.newsHead,
+            newsDes: newsArt.newsDes,
+            newsUrl: newsArt.newsUrl,
           );
         },
       ),
