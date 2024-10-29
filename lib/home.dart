@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:news_app/controller/fetchNews.dart';
-import 'package:news_app/model/newsArt.dart';
-import 'package:news_app/view/widget/NewsContainer.dart';
+import 'package:news_snack/controller/fetchNews.dart';
+import 'package:news_snack/model/newsArt.dart';
+import 'package:news_snack/view/widget/NewsContainer.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);

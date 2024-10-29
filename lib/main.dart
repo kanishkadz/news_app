@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:news_app/view/home.dart';
-import 'package:news_app/view/splash.dart';
+import 'package:news_snack/view/home.dart';
+import 'package:news_snack/view/splash.dart';
 
 void main() {
   runApp(const MyApp());
