@@ -12,7 +12,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   bool isLoading = true;
-  List<NewsArt>? newsArticles; // Change to a list
+  List<NewsArt>? newsArticles;
 
   Future<void> getNews() async {
     try {
