@@ -8,9 +8,7 @@ This project is a **news app** developed using **Flutter**, designed to deliver 
 
 - **Real-time News Updates:** Fetches live news articles from a news API
 - **Responsive UI:** Works seamlessly on web (due to build issues with the emulator)
-- **Category Filters:** Allows filtering by categories like business, sports, technology, etc.
 - **User-Friendly Interface:** Simple navigation and readable layouts
-- **Dark Mode Support:** Toggle between light and dark modes
 
 ---
 
