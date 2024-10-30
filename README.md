@@ -1,4 +1,4 @@
-# 📰 News App in Flutter
+# 📰 News App 
 
 This project is a **news app** developed using **Flutter**, designed to deliver the latest news articles to users in a clean, responsive interface. The app fetches news from an external API and displays headlines, summaries, and publication details for each article.
 
